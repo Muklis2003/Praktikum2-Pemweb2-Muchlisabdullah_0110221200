@@ -85,23 +85,49 @@
 
         <div class="m-5 border border-success p-4 rounded">
             <?php
-                if(isset($_GET['submit'])){
-                    $nama = $_GET['nama'];
-                    $matkul = $_GET['matkul'];
-                    $nilai_uts = $_GET['nilai_uts'];
-                    $nilai_uas = $_GET['nilai_uas'];
-                    $nilai_tugas = $_GET['nilai_tugas'];
-                    $nilai_akhir = ($nilai_uts + $nilai_uas + $nilai_tugas) / 3;
-                    echo "Nama Lengkap : $nama <br>";
-                    echo "Mata Kuliah : $matkul <br>";
-                    echo "Nilai UTS : $nilai_uts <br>";
-                    echo "Nilai UAS : $nilai_uas <br>";
-                    echo "Nilai Tugas/Praktikum : $nilai_tugas <br>";
-                    echo "Nilai Akhir : $nilai_akhir <br>";
-                }?>
-            
-    
-        </div>
-
-</body>
+                        if(isset($_GET['submit'])){
+                            $nama = $_GET['nama'];
+                            $nama_matkul = $_GET['matkul'];
+                            $nilai_uts = $_GET['nilai_uts'];
+                            $nilai_uas = $_GET['nilai_uas'];
+                            $nilai_tugas = $_GET['nilai_tugas'];
+                            $nilai_akhir = ($nilai_uts + $nilai_uas + $nilai_tugas) / 3;
+                            if ($nilai_akhir > 90) {
+			    $grade = "A+";
+			} elseif($nilai_akhir > 80){
+			    $grade = "A";
+			} elseif($nilai_akhir > 70){
+			    $grade = "B+";
+			} elseif($nilai_akhir > 60){
+ 			   $grade = "B";
+			} elseif($nilai_akhir > 50){
+			    $grade = "C+";
+			} elseif($nilai_akhir > 40){
+			    $grade = "C";
+			} elseif($nilai_akhir > 30){
+			    $grade = "D";
+			} elseif($nilai_akhir > 20){
+			    $grade = "E";
+			} else {
+			    $grade = "F";
+			}                        
+                          
+                        
+                        }?>
+                     <?php if(isset($_GET['submit'])){?>
+                    <div class="m-3 alert-success p-3">
+                     <p>Nama Lengkap : <?= $nama?> </p>
+                     <p>Mata Kuliah : <?= $nama_matkul?></p>
+                     <p>Nilai UTS : <?= $nilai_uts?></p>
+                     <p>Nilai UAS : <?= $nilai_uas?></p>
+                     <p>Nilai Tugas/Praktikum : <?= $nilai_tugas?></p>
+                     <p>Nilai Akhir : <?= $nilai_akhir?></p>
+                     <p>Grade : <?= $grade?></p>
+                   </div>
+                   <?php }else{
+                    } ?>
+            </div>
+         </div>
+      </div>
+   </body>
 </html>
